@@ -13,6 +13,19 @@ def do_close():
     root.destroy()
 
 
+# Добавление дополнительного окна
+def popup_window():
+    window = tk.Toplevel()
+    window.geometry("280x300")
+    window.title("A/B Результат")
+
+    # Добавление кнопки закрытия окна
+    btn_close_popup = tk.Button(
+        window, text="Закрыть", font=helvetica, command=window.destroy
+    )
+    btn_close_popup.place(x=160, y=250, width=90, height=30)
+
+
 # Добавление метки заголовка
 lbl_title = tk.Label(
     text="A/B калькулятор", font=("Helvetica", 16, "bold"), fg="#0000cc"
@@ -61,7 +74,7 @@ ent_conversions_2.place(x=115, y=205, width=90, height=20)
 
 
 # Добавление кнопки "Рассчитать"
-btn_calculate = tk.Button(root, text="Рассчитать", font=helvetica)
+btn_calculate = tk.Button(root, text="Рассчитать", font=helvetica, command=popup_window)
 btn_calculate.place(x=25, y=250, width=90, height=30)
 
 # Добавление кнопки "Закрытия"
