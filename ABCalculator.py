@@ -4,6 +4,7 @@ import tkinter as tk
 root = tk.Tk()
 root.title("A/B калькулятор")
 root.geometry("280x300")
+root.resizable(False, False)
 
 helvetica = ("Helvetica", 10, "bold")
 
@@ -18,6 +19,7 @@ def popup_window():
     window = tk.Toplevel()
     window.geometry("280x300")
     window.title("A/B Результат")
+    window.resizable(False, False)
 
     # Добавление кнопки закрытия окна
     btn_close_popup = tk.Button(
