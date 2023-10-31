@@ -45,14 +45,16 @@ lbl_subtitle.place(x=25, y=55)
 lbl_visitors_1 = tk.Label(text="Посетители:", font=helvetica)
 lbl_visitors_1.place(x=25, y=85)
 
-ent_visitors_1 = tk.Entry(font=helvetica)
+ent_visitors_1 = tk.Entry(font=helvetica, justify="center")
 ent_visitors_1.place(x=115, y=85, width=90, height=20)
+ent_visitors_1.insert(tk.END, "0")
 
 lbl_conversions_1 = tk.Label(text="Конверсии:", font=helvetica)
 lbl_conversions_1.place(x=25, y=115)
 
-ent_conversions_1 = tk.Entry(font=helvetica)
+ent_conversions_1 = tk.Entry(font=helvetica, justify="center")
 ent_conversions_1.place(x=115, y=115, width=90, height=20)
+ent_conversions_1.insert(tk.END, "0")
 
 
 # Добавление метки заголовка тестовой группы
@@ -65,14 +67,16 @@ lbl_subtitle_2.place(x=25, y=145)
 lbl_visitors_2 = tk.Label(text="Посетители:", font=helvetica)
 lbl_visitors_2.place(x=25, y=175)
 
-ent_visitors_2 = tk.Entry(font=helvetica)
+ent_visitors_2 = tk.Entry(font=helvetica, justify="center")
 ent_visitors_2.place(x=115, y=175, width=90, height=20)
+ent_visitors_2.insert(tk.END, "0")
 
 lbl_conversions_2 = tk.Label(text="Конверсии:", font=helvetica)
 lbl_conversions_2.place(x=25, y=205)
 
-ent_conversions_2 = tk.Entry(font=helvetica)
+ent_conversions_2 = tk.Entry(font=helvetica, justify="center")
 ent_conversions_2.place(x=115, y=205, width=90, height=20)
+ent_conversions_2.insert(tk.END, "0")
 
 
 # Добавление кнопки "Рассчитать"
