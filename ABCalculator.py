@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox as mb
 
 # Создание главного окна
 root = tk.Tk()
@@ -21,6 +22,12 @@ def do_proccessing():
     n2 = int(ent_visitors_2.get())
     c2 = int(ent_conversions_2.get())
 
+    # Проверка данных из полей ввода
+    if n1 <= 0 or n2 <= 0:
+        mb.showerror(title="Ошибка", message="Неверное количество посетителей")
+        return
+
+    # Открытия окна результатов
     popup_window(n1, c1, n2, c2)
 
 
