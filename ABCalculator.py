@@ -14,8 +14,18 @@ def do_close():
     root.destroy()
 
 
-# Добавление дополнительного окна
-def popup_window():
+def do_proccessing():
+    # Считывание данных из полей вводе
+    n1 = int(ent_visitors_1.get())
+    c1 = int(ent_conversions_1.get())
+    n2 = int(ent_visitors_2.get())
+    c2 = int(ent_conversions_2.get())
+
+    popup_window(n1, c1, n2, c2)
+
+
+# Функция вызова окна результатов
+def popup_window(n1, c1, n2, c2):
     window = tk.Toplevel()
     window.geometry("280x300")
     window.title("A/B Результат")
@@ -26,6 +36,9 @@ def popup_window():
         window, text="Закрыть", font=helvetica, command=window.destroy
     )
     btn_close_popup.place(x=160, y=250, width=90, height=30)
+
+    # Перевод фокуса на созданное окно
+    window.focus_force()
 
 
 # Добавление метки заголовка
@@ -80,7 +93,9 @@ ent_conversions_2.insert(tk.END, "0")
 
 
 # Добавление кнопки "Рассчитать"
-btn_calculate = tk.Button(root, text="Рассчитать", font=helvetica, command=popup_window)
+btn_calculate = tk.Button(
+    root, text="Рассчитать", font=helvetica, command=do_proccessing
+)
 btn_calculate.place(x=25, y=250, width=90, height=30)
 
 # Добавление кнопки "Закрытия"
