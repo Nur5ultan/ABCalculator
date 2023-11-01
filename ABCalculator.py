@@ -65,7 +65,7 @@ def popup_window(n1, c1, n2, c2):
     p2 = c2 / n2
     txt_output.insert(
         tk.END,
-        "Конверсия                   "
+        "Конверсия                 "
         + num_percent(p1)
         + "    "
         + num_percent(p2)
@@ -76,7 +76,7 @@ def popup_window(n1, c1, n2, c2):
     sigma_2 = math.sqrt(p2 * (1 - p2) / n2)
     txt_output.insert(
         tk.END,
-        "Стандартный отклонение     "
+        "Стандартный отклонение   "
         + num_percent(sigma_1)
         + "     "
         + num_percent(sigma_2)
