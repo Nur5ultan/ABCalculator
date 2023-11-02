@@ -10,7 +10,8 @@ root.title("A/B калькулятор")
 root.geometry("280x300")
 root.resizable(False, False)
 
-helvetica = ("Helvetica", 10, "bold")
+helvetica_10 = ("Helvetica", 10, "bold")
+helvetica_12 = ("Helvetica", 12, "bold")
 
 
 # Функция закрытия программы
@@ -179,37 +180,29 @@ def popup_window(n1, c1, n2, c2):
     if p_value < 0.005 or p_value > 0.995:
         confidence_99 = True
 
-    lbl_comment_95 = tk.Label(window, text="95% уверенность: ", font=helvetica)
+    lbl_comment_95 = tk.Label(window, text="95% уверенность: ", font=helvetica_10)
     lbl_comment_95.place(x=25, y=25)
 
     if confidence_95:
-        lbl_result_95 = tk.Label(
-            window, text="ДА", font=("Helvetica", 12, "bold"), fg="#008800"
-        )
+        lbl_result_95 = tk.Label(window, text="ДА", font=helvetica_12, fg="#008800")
         lbl_result_95.place(x=160, y=25)
     else:
-        lbl_result_95 = tk.Label(
-            window, text="НЕТ", font=("Helvetica", 12, "bold"), fg="#ff0000"
-        )
+        lbl_result_95 = tk.Label(window, text="НЕТ", font=helvetica_12, fg="#ff0000")
         lbl_result_95.place(x=160, y=25)
 
-    lbl_result_99 = tk.Label(window, text="99% уверенность: ", font=helvetica)
+    lbl_result_99 = tk.Label(window, text="99% уверенность: ", font=helvetica_10)
     lbl_result_99.place(x=25, y=65)
 
     if confidence_99:
-        lbl_result_99 = tk.Label(
-            window, text="ДА", font=("Helvetica", 12, "bold"), fg="#008800"
-        )
+        lbl_result_99 = tk.Label(window, text="ДА", font=helvetica_12, fg="#008800")
         lbl_result_99.place(x=160, y=65)
     else:
-        lbl_result_99 = tk.Label(
-            window, text="НЕТ", font=("Helvetica", 12, "bold"), fg="#ff0000"
-        )
+        lbl_result_99 = tk.Label(window, text="НЕТ", font=helvetica_12, fg="#ff0000")
         lbl_result_99.place(x=160, y=65)
 
     # Добавление кнопки закрытия окна
     btn_close_popup = tk.Button(
-        window, text="Закрыть", font=helvetica, command=window.destroy
+        window, text="Закрыть", font=helvetica_10, command=window.destroy
     )
     btn_close_popup.place(x=190, y=450, width=90, height=30)
 
@@ -225,57 +218,53 @@ lbl_title.place(x=55, y=20)
 
 
 # Добавление метки заголовка контрольной группы
-lbl_subtitle = tk.Label(
-    text="Контрольная группа", font=("Helvetica", 12, "bold"), fg="#0066ff"
-)
+lbl_subtitle = tk.Label(text="Контрольная группа", font=helvetica_12, fg="#0066ff")
 lbl_subtitle.place(x=25, y=55)
 
 # Добавление полей ввода контрольной группы
-lbl_visitors_1 = tk.Label(text="Посетители:", font=helvetica)
+lbl_visitors_1 = tk.Label(text="Посетители:", font=helvetica_10)
 lbl_visitors_1.place(x=25, y=85)
 
-ent_visitors_1 = tk.Entry(font=helvetica, justify="center")
+ent_visitors_1 = tk.Entry(font=helvetica_10, justify="center")
 ent_visitors_1.place(x=115, y=85, width=90, height=20)
 ent_visitors_1.insert(tk.END, "0")
 
-lbl_conversions_1 = tk.Label(text="Конверсии:", font=helvetica)
+lbl_conversions_1 = tk.Label(text="Конверсии:", font=helvetica_10)
 lbl_conversions_1.place(x=25, y=115)
 
-ent_conversions_1 = tk.Entry(font=helvetica, justify="center")
+ent_conversions_1 = tk.Entry(font=helvetica_10, justify="center")
 ent_conversions_1.place(x=115, y=115, width=90, height=20)
 ent_conversions_1.insert(tk.END, "0")
 
 
 # Добавление метки заголовка тестовой группы
-lbl_subtitle_2 = tk.Label(
-    text="Тестовая группа", font=("Helvetica", 12, "bold"), fg="#008800"
-)
+lbl_subtitle_2 = tk.Label(text="Тестовая группа", font=helvetica_12, fg="#008800")
 lbl_subtitle_2.place(x=25, y=145)
 
 # Добавление полей ввода тестовой группы
-lbl_visitors_2 = tk.Label(text="Посетители:", font=helvetica)
+lbl_visitors_2 = tk.Label(text="Посетители:", font=helvetica_10)
 lbl_visitors_2.place(x=25, y=175)
 
-ent_visitors_2 = tk.Entry(font=helvetica, justify="center")
+ent_visitors_2 = tk.Entry(font=helvetica_10, justify="center")
 ent_visitors_2.place(x=115, y=175, width=90, height=20)
 ent_visitors_2.insert(tk.END, "0")
 
-lbl_conversions_2 = tk.Label(text="Конверсии:", font=helvetica)
+lbl_conversions_2 = tk.Label(text="Конверсии:", font=helvetica_10)
 lbl_conversions_2.place(x=25, y=205)
 
-ent_conversions_2 = tk.Entry(font=helvetica, justify="center")
+ent_conversions_2 = tk.Entry(font=helvetica_10, justify="center")
 ent_conversions_2.place(x=115, y=205, width=90, height=20)
 ent_conversions_2.insert(tk.END, "0")
 
 
 # Добавление кнопки "Рассчитать"
 btn_calculate = tk.Button(
-    root, text="Рассчитать", font=helvetica, command=do_proccessing
+    root, text="Рассчитать", font=helvetica_10, command=do_proccessing
 )
 btn_calculate.place(x=25, y=250, width=90, height=30)
 
 # Добавление кнопки "Закрытия"
-btn_close = tk.Button(root, text="Закрыть", font=helvetica, command=do_close)
+btn_close = tk.Button(root, text="Закрыть", font=helvetica_10, command=do_close)
 btn_close.place(x=160, y=250, width=90, height=30)
 
 # Запуск цикла mainloop
