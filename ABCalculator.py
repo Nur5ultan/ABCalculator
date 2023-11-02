@@ -67,7 +67,7 @@ def popup_window(n1, c1, n2, c2):
         tk.END,
         "Конверсия                 "
         + num_percent(p1)
-        + "    "
+        + "     "
         + num_percent(p2)
         + os.linesep,
     )
@@ -76,10 +76,85 @@ def popup_window(n1, c1, n2, c2):
     sigma_2 = math.sqrt(p2 * (1 - p2) / n2)
     txt_output.insert(
         tk.END,
-        "Стандартный отклонение   "
+        "Стандартный отклонение    "
         + num_percent(sigma_1)
         + "     "
         + num_percent(sigma_2)
+        + os.linesep,
+    )
+    txt_output.insert(
+        tk.END,
+        "----------------------------------------------------------" + os.linesep,
+    )
+
+    # Добавление вывода возможных разбросов
+    z1 = 1.96
+    lower1_95 = p1 - z1 * sigma_1
+    if lower1_95 < 0:
+        lower1_95 = 0
+    upper1_95 = p1 + z1 * sigma_1
+    if upper1_95 > 1:
+        upper1_95 = 1
+
+    lower2_95 = p2 - z1 * sigma_2
+    if lower2_95 < 0:
+        lower2_95 = 0
+    upper2_95 = p2 + z1 * sigma_2
+    if upper2_95 > 1:
+        upper2_95 = 1
+
+    txt_output.insert(tk.END, "95% Возможный разброс  " + os.linesep)
+    txt_output.insert(
+        tk.END,
+        "                   От     "
+        + num_percent(lower1_95)
+        + "     "
+        + num_percent(lower2_95)
+        + os.linesep,
+    )
+    txt_output.insert(
+        tk.END,
+        "                   До     "
+        + num_percent(upper1_95)
+        + "     "
+        + num_percent(upper2_95)
+        + os.linesep,
+    )
+    txt_output.insert(
+        tk.END,
+        "----------------------------------------------------------" + os.linesep,
+    )
+
+    z2 = 2.575
+    lower1_99 = p1 - z2 * sigma_1
+    if lower1_99 < 0:
+        lower1_99 = 0
+    upper1_99 = p1 + z2 * sigma_1
+    if upper1_99 > 1:
+        upper1_99 = 1
+
+    lower2_99 = p2 - z2 * sigma_2
+    if lower2_99 < 0:
+        lower2_99 = 0
+    upper2_99 = p2 + z2 * sigma_2
+    if upper2_99 > 1:
+        upper2_99 = 1
+
+    txt_output.insert(tk.END, "99% Возможный разброс  " + os.linesep)
+    txt_output.insert(
+        tk.END,
+        "                   От     "
+        + num_percent(lower1_99)
+        + "     "
+        + num_percent(lower2_99)
+        + os.linesep,
+    )
+    txt_output.insert(
+        tk.END,
+        "                   До     "
+        + num_percent(upper1_99)
+        + "     "
+        + num_percent(upper2_99)
         + os.linesep,
     )
     txt_output.insert(
