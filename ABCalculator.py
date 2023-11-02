@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox as mb
 import os
 import math
+from scipy.stats import norm
 
 # Создание главного окна
 root = tk.Tk()
@@ -57,7 +58,7 @@ def popup_window(n1, c1, n2, c2):
     )
     txt_output.insert(
         tk.END,
-        "----------------------------------------------------------" + os.linesep,
+        "---------------------------------------------------------" + os.linesep,
     )
 
     # Добавление вывода конверсии и стандартного отклонения
@@ -84,7 +85,7 @@ def popup_window(n1, c1, n2, c2):
     )
     txt_output.insert(
         tk.END,
-        "----------------------------------------------------------" + os.linesep,
+        "---------------------------------------------------------" + os.linesep,
     )
 
     # Добавление вывода возможных разбросов
@@ -122,7 +123,7 @@ def popup_window(n1, c1, n2, c2):
     )
     txt_output.insert(
         tk.END,
-        "----------------------------------------------------------" + os.linesep,
+        "---------------------------------------------------------" + os.linesep,
     )
 
     z2 = 2.575
@@ -159,8 +160,52 @@ def popup_window(n1, c1, n2, c2):
     )
     txt_output.insert(
         tk.END,
-        "----------------------------------------------------------" + os.linesep,
+        "---------------------------------------------------------" + os.linesep,
     )
+
+    # Вычисление Z и P
+    z_score = (p2 - p1) / math.sqrt(sigma_1 * sigma_1 + sigma_2 * sigma_2)
+    txt_output.insert(tk.END, "Z = " + "{:.7f}".format(z_score) + os.linesep)
+
+    p_value = norm.sf(x=z_score, loc=0, scale=1)
+    txt_output.insert(tk.END, "P = " + "{:.7f}".format(p_value) + os.linesep)
+
+    # Добавление оценки результатов
+    confidence_95 = False
+    if p_value < 0.025 or p_value > 0.975:
+        confidence_95 = True
+
+    confidence_99 = False
+    if p_value < 0.005 or p_value > 0.995:
+        confidence_99 = True
+
+    lbl_comment_95 = tk.Label(window, text="95% уверенность: ", font=helvetica)
+    lbl_comment_95.place(x=25, y=25)
+
+    if confidence_95:
+        lbl_result_95 = tk.Label(
+            window, text="ДА", font=("Helvetica", 12, "bold"), fg="#008800"
+        )
+        lbl_result_95.place(x=160, y=25)
+    else:
+        lbl_result_95 = tk.Label(
+            window, text="НЕТ", font=("Helvetica", 12, "bold"), fg="#ff0000"
+        )
+        lbl_result_95.place(x=160, y=25)
+
+    lbl_result_99 = tk.Label(window, text="99% уверенность: ", font=helvetica)
+    lbl_result_99.place(x=25, y=65)
+
+    if confidence_99:
+        lbl_result_99 = tk.Label(
+            window, text="ДА", font=("Helvetica", 12, "bold"), fg="#008800"
+        )
+        lbl_result_99.place(x=160, y=65)
+    else:
+        lbl_result_99 = tk.Label(
+            window, text="НЕТ", font=("Helvetica", 12, "bold"), fg="#ff0000"
+        )
+        lbl_result_99.place(x=160, y=65)
 
     # Добавление кнопки закрытия окна
     btn_close_popup = tk.Button(
@@ -191,14 +236,14 @@ lbl_visitors_1.place(x=25, y=85)
 
 ent_visitors_1 = tk.Entry(font=helvetica, justify="center")
 ent_visitors_1.place(x=115, y=85, width=90, height=20)
-ent_visitors_1.insert(tk.END, "255")
+ent_visitors_1.insert(tk.END, "0")
 
 lbl_conversions_1 = tk.Label(text="Конверсии:", font=helvetica)
 lbl_conversions_1.place(x=25, y=115)
 
 ent_conversions_1 = tk.Entry(font=helvetica, justify="center")
 ent_conversions_1.place(x=115, y=115, width=90, height=20)
-ent_conversions_1.insert(tk.END, "26")
+ent_conversions_1.insert(tk.END, "0")
 
 
 # Добавление метки заголовка тестовой группы
@@ -213,14 +258,14 @@ lbl_visitors_2.place(x=25, y=175)
 
 ent_visitors_2 = tk.Entry(font=helvetica, justify="center")
 ent_visitors_2.place(x=115, y=175, width=90, height=20)
-ent_visitors_2.insert(tk.END, "235")
+ent_visitors_2.insert(tk.END, "0")
 
 lbl_conversions_2 = tk.Label(text="Конверсии:", font=helvetica)
 lbl_conversions_2.place(x=25, y=205)
 
 ent_conversions_2 = tk.Entry(font=helvetica, justify="center")
 ent_conversions_2.place(x=115, y=205, width=90, height=20)
-ent_conversions_2.insert(tk.END, "18")
+ent_conversions_2.insert(tk.END, "0")
 
 
 # Добавление кнопки "Рассчитать"
